@@ -1,6 +1,6 @@
 # DevOps Engineering: Core Practices
 
-[![Labs](https://img.shields.io/badge/Labs-16-blue)](#labs)
+[![Labs](https://img.shields.io/badge/Labs-18-blue)](#labs)
 [![Exam](https://img.shields.io/badge/Exam-Optional-green)](#exam-alternative)
 [![Duration](https://img.shields.io/badge/Duration-14%20Weeks-lightgrey)](#course-roadmap)
 
@@ -37,6 +37,9 @@ Master **production-grade DevOps practices** through hands-on labs. Build, conta
 | 14 | 14 | Progressive Delivery | Argo Rollouts |
 | 15 | 15 | StatefulSets | Persistent Storage, Headless Services |
 | 16 | 16 | Cluster Monitoring | Kube-Prometheus, Init Containers |
+| — | **Exam Alternative Labs** | | |
+| 17 | 17 | Edge Deployment | Fly.io, Global Distribution |
+| 18 | 18 | Decentralized Storage | 4EVERLAND, IPFS, Web3 |
 
 ---
 
@@ -251,10 +254,10 @@ git push -u origin lab1
 
 ## Course Completion
 
-After completing all 16 labs, you'll have:
+After completing all 16 core labs (+ optional Labs 17-18), you'll have:
 
 ✅ Full-stack DevOps expertise
-✅ Production-ready portfolio with 16+ projects
+✅ Production-ready portfolio with 16-18 projects
 ✅ Container and Kubernetes mastery
 ✅ CI/CD pipeline experience
 ✅ Infrastructure as Code skills
