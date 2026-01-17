@@ -454,9 +454,10 @@ When using `subPath`, the file is a copy, not a symlink, so it doesn't update. U
 
 ## Looking Ahead
 
-- **Lab 13:** ArgoCD will deploy your configured Helm charts
-- **Lab 14:** StatefulSets for per-pod persistent storage
-- **Lab 15:** Monitoring your application configuration and storage
+- **Lab 13:** ArgoCD will deploy your configured Helm charts via GitOps
+- **Lab 14:** Progressive delivery with Argo Rollouts
+- **Lab 15:** StatefulSets for per-pod persistent storage
+- **Lab 16:** Monitoring your application configuration and storage
 
 ---
 

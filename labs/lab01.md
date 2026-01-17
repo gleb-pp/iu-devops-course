@@ -679,7 +679,7 @@ This service evolves throughout the course:
 
 - **Lab 2:** Containerize with Docker, multi-stage builds
 - **Lab 3:** Add unit tests and CI/CD pipeline
-- **Lab 7-8:** Add `/metrics` endpoint for Prometheus
+- **Lab 8:** Add `/metrics` endpoint for Prometheus
 - **Lab 9:** Deploy to Kubernetes using `/health` probes
 - **Lab 12:** Add `/visits` endpoint with file persistence
 - **Lab 13:** Multi-environment deployment with GitOps

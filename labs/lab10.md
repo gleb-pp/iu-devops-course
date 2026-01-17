@@ -891,9 +891,10 @@ helm install app1-release k8s/app1
 ## Looking Ahead
 
 - **Lab 11:** Secrets management with Vault (integrate with Helm)
-- **Lab 12:** ConfigMaps and advanced configuration
+- **Lab 12:** ConfigMaps and persistent volumes
 - **Lab 13:** ArgoCD deploys Helm charts via GitOps
-- **Lab 14:** StatefulSets with Helm
+- **Lab 14:** Progressive delivery with Argo Rollouts
+- **Lab 15:** StatefulSets for stateful applications
 
 ---
 

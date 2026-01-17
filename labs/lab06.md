@@ -1340,10 +1340,11 @@ git push
 
 Your Ansible automation evolves throughout the course:
 
-- **Lab 7:** Application Monitoring - Add Prometheus metrics endpoint to your app
-- **Lab 8:** Infrastructure Monitoring - Deploy Prometheus & Grafana with Ansible
+- **Lab 7:** Logging Stack - Deploy Loki, Promtail, and Grafana
+- **Lab 8:** Metrics Stack - Add Prometheus metrics to your app
 - **Lab 9:** Kubernetes Basics - Migrate from Docker Compose to K8s deployments
-- **Lab 10-11:** Advanced K8s - StatefulSets, ConfigMaps, Secrets
+- **Lab 10:** Helm charts for templated K8s deployments
+- **Lab 11-12:** Secrets with Vault, ConfigMaps, and persistent storage
 - **Lab 13:** GitOps with ArgoCD - Declarative Kubernetes deployments
 
 ---

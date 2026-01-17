@@ -719,7 +719,9 @@ curl -k https://local.example.com/app1
 - **Lab 11:** Secrets management with Vault
 - **Lab 12:** ConfigMaps and application configuration
 - **Lab 13:** ArgoCD for GitOps deployments
-- **Lab 15:** Kubernetes monitoring and observability
+- **Lab 14:** Progressive delivery with Argo Rollouts
+- **Lab 15:** StatefulSets for stateful applications
+- **Lab 16:** Kubernetes monitoring and observability
 
 ---
 

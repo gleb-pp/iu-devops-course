@@ -437,7 +437,8 @@ env:
 
 - **Lab 12:** ConfigMaps for non-sensitive configuration and persistent storage
 - **Lab 13:** ArgoCD will deploy your secured Helm charts via GitOps
-- **Lab 14:** StatefulSets with persistent secret storage
+- **Lab 14:** Progressive delivery with Argo Rollouts
+- **Lab 15:** StatefulSets with persistent storage
 
 ---
 

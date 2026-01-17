@@ -584,9 +584,10 @@ roles/monitoring/
 
 ## Looking Ahead
 
-- **Lab 8:** Metrics with Prometheus - Combine logs and metrics
-- **Lab 9-11:** Kubernetes - Deploy Loki in K8s
-- **Lab 15:** Full Observability - Logs + Metrics + Traces
+- **Lab 8:** Metrics with Prometheus - Add metrics to complement logs
+- **Lab 9:** Kubernetes Fundamentals - Deploy your apps to K8s
+- **Lab 10-12:** Helm, Secrets, ConfigMaps - Package and configure K8s deployments
+- **Lab 16:** Kubernetes Monitoring - Full observability in K8s
 
 ---
 

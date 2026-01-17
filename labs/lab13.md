@@ -583,8 +583,9 @@ generators:
 
 ## Looking Ahead
 
-- **Lab 14:** StatefulSets managed by ArgoCD
-- **Lab 15:** Monitoring your GitOps deployments
+- **Lab 14:** Progressive delivery with Argo Rollouts
+- **Lab 15:** StatefulSets for stateful applications
+- **Lab 16:** Monitoring your GitOps deployments
 
 ---
 

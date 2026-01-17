@@ -745,7 +745,7 @@ ansible-playbook playbooks/deploy-monitoring.yml
 
 - **Lab 9:** Kubernetes - Deploy your monitored apps to K8s
 - **Lab 10:** Helm - Package your monitoring stack as Helm charts
-- **Lab 15:** Kube-Prometheus - Full K8s monitoring with Prometheus Operator
+- **Lab 16:** Kubernetes Monitoring - Full observability with init containers and probes
 
 ---
 
