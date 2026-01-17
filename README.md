@@ -2,7 +2,7 @@
 
 [![Labs](https://img.shields.io/badge/Labs-18-blue)](#labs)
 [![Exam](https://img.shields.io/badge/Exam-Optional-green)](#exam-alternative)
-[![Duration](https://img.shields.io/badge/Duration-14%20Weeks-lightgrey)](#course-roadmap)
+[![Duration](https://img.shields.io/badge/Duration-18%20Weeks-lightgrey)](#course-roadmap)
 
 Master **production-grade DevOps practices** through hands-on labs. Build, containerize, deploy, monitor, and scale applications using industry-standard tools.
 
