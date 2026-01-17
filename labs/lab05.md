@@ -21,6 +21,8 @@ Master the basics of Ansible by creating a professional role-based automation sy
 - Infrastructure verification and health checks
 - Basic application deployment with Docker
 
+**Tech Stack:** Ansible 2.16+ | Ansible Vault | Docker | YAML
+
 **Connection to Previous Labs:**
 - **Lab 4:** Use the VM you created (cloud or local)
 - **Labs 1-3:** Deploy your containerized Python app with CI/CD-built images

@@ -24,6 +24,8 @@ Learn Infrastructure as Code (IaC) by creating virtual machines in the cloud usi
 - **Lab 3:** CI/CD for applications - now we'll add CI/CD for infrastructure
 - **Lab 5:** Ansible will provision software on these VMs (you'll need a VM ready!)
 
+**Tech Stack:** Terraform 1.9+ | Pulumi 3.x | Yandex Cloud / AWS
+
 **Why Two Tools?**
 By using both Terraform and Pulumi for the same task, you'll understand:
 - Different IaC philosophies (declarative vs imperative)

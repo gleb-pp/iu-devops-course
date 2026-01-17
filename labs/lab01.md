@@ -17,6 +17,8 @@ Create a **DevOps Info Service** - a web application providing detailed informat
 - Python best practices and documentation
 - Foundation for future DevOps tooling
 
+**Tech Stack:** Python 3.11+ | Flask 3.1 or FastAPI 0.115
+
 ---
 
 ## Tasks
@@ -323,10 +325,10 @@ logger.debug(f'Request: {request.method} {request.path}')
 
 ```txt
 # Web Framework
-Flask==3.0.0
+Flask==3.1.0
 # or
-fastapi==0.104.1
-uvicorn==0.24.0
+fastapi==0.115.0
+uvicorn[standard]==0.32.0  # Includes performance extras
 ```
 
 Pin exact versions for reproducibility.
@@ -630,11 +632,11 @@ func main() {
 <details>
 <summary>📚 Python Web Frameworks</summary>
 
-- [Flask Documentation](https://flask.palletsprojects.com/)
-- [Flask Quickstart](https://flask.palletsprojects.com/en/3.0.x/quickstart/)
+- [Flask 3.1 Documentation](https://flask.palletsprojects.com/en/latest/)
+- [Flask Quickstart](https://flask.palletsprojects.com/en/latest/quickstart/)
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
-- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/)
-- [Django Documentation](https://docs.djangoproject.com/)
+- [FastAPI Tutorial](https://fastapi.tiangolo.com/tutorial/first-steps/)
+- [Django 5.1 Documentation](https://docs.djangoproject.com/en/5.1/)
 
 </details>
 

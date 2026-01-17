@@ -18,6 +18,8 @@ Take your containerized app from Labs 1-2 and add automated testing and deployme
 - Automated Docker image publishing
 - Continuous integration for multiple applications
 
+**Tech Stack:** GitHub Actions | pytest 8+ | Python 3.11+ | Snyk | Docker
+
 **Connection to Previous Labs:**
 - **Lab 1:** Test the endpoints you created
 - **Lab 2:** Automate the Docker build/push workflow
@@ -202,7 +204,7 @@ Take your containerized app from Labs 1-2 and add automated testing and deployme
 ```
 
 **Important Concepts:**
-- **Actions Marketplace:** Reusable actions (actions/checkout, actions/setup-python, docker/build-push-action)
+- **Actions Marketplace:** Reusable actions (actions/checkout@v4, actions/setup-python@v5, docker/build-push-action@v6)
 - **Secrets:** How to store Docker Hub credentials securely
 - **Job Dependencies:** Can one job depend on another succeeding?
 - **Matrix Builds:** Testing multiple Python versions (optional but good to know)
@@ -478,7 +480,7 @@ Snyk is a security tool that scans your dependencies for known vulnerabilities.
 
 **Resources:**
 - [Snyk GitHub Actions](https://github.com/snyk/actions)
-- [Snyk Python Example](https://github.com/snyk/actions/tree/master/python-3.8)
+- [Snyk Python Example](https://github.com/snyk/actions/tree/master/python)
 - [Snyk Documentation](https://docs.snyk.io/integrations/ci-cd-integrations/github-actions-integration)
 
 **Common Issues:**
@@ -665,9 +667,10 @@ gradle test jacocoTestReport
   run: pytest --cov=. --cov-report=xml
 
 - name: Upload to Codecov
-  uses: codecov/codecov-action@v3
+  uses: codecov/codecov-action@v4
   with:
     file: ./coverage.xml
+    token: ${{ secrets.CODECOV_TOKEN }}
 ```
 
 **Coverage Badge:**

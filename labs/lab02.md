@@ -17,6 +17,8 @@ Take your Lab 1 application and package it into a Docker container. Learn image 
 - Image optimization techniques
 - Docker Hub workflow
 
+**Tech Stack:** Docker 25+ | Python 3.13-slim | Multi-stage builds
+
 ---
 
 ## Tasks
@@ -55,9 +57,9 @@ Create `app_python/Dockerfile` with these requirements:
 - **Dependency Installation**: Why copy requirements.txt separately from application code?
 
 **Resources:**
-- [Dockerfile Reference](https://docs.docker.com/engine/reference/builder/)
-- [Best Practices Guide](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
-- [Python Image Variants](https://hub.docker.com/_/python)
+- [Dockerfile Reference](https://docs.docker.com/reference/dockerfile/)
+- [Best Practices Guide](https://docs.docker.com/build/building/best-practices/)
+- [Python Image Variants](https://hub.docker.com/_/python) - Use 3.13-slim or 3.12-slim
 
 **Think About:**
 - What happens if you copy all files before installing dependencies?
@@ -128,8 +130,8 @@ Verify that your application works the same way in the container as it did local
 
 **Resources:**
 - [Docker Hub Quickstart](https://docs.docker.com/docker-hub/quickstart/)
-- [Docker Tag Reference](https://docs.docker.com/engine/reference/commandline/tag/)
-- [Best Practices for Tagging](https://docs.docker.com/develop/dev-best-practices/)
+- [Docker Tag Reference](https://docs.docker.com/reference/cli/docker/image/tag/)
+- [Best Practices for Tagging](https://docs.docker.com/build/building/best-practices/#tagging)
 
 </details>
 
@@ -321,19 +323,21 @@ Document your implementation with these sections:
 <details>
 <summary>📚 Docker Documentation</summary>
 
-- [Dockerfile Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
-- [Docker Build Reference](https://docs.docker.com/engine/reference/builder/)
+- [Dockerfile Best Practices](https://docs.docker.com/build/building/best-practices/)
+- [Dockerfile Reference](https://docs.docker.com/reference/dockerfile/)
 - [Multi-Stage Builds](https://docs.docker.com/build/building/multi-stage/)
-- [.dockerignore](https://docs.docker.com/engine/reference/builder/#dockerignore-file)
+- [.dockerignore](https://docs.docker.com/reference/dockerfile/#dockerignore-file)
+- [Docker Build Guide](https://docs.docker.com/build/guide/)
 
 </details>
 
 <details>
 <summary>🔒 Security Resources</summary>
 
-- [Docker Security Best Practices](https://snyk.io/blog/10-docker-image-security-best-practices/)
-- [Why Non-Root Containers](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user)
-- [Distroless Images](https://github.com/GoogleContainerTools/distroless)
+- [Docker Security Best Practices](https://docs.docker.com/build/building/best-practices/#security)
+- [Snyk Docker Security](https://snyk.io/learn/docker-security-scanning/)
+- [Why Non-Root Containers](https://docs.docker.com/build/building/best-practices/#user)
+- [Distroless Images](https://github.com/GoogleContainerTools/distroless) - Minimal base images
 
 </details>
 
