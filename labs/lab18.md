@@ -25,7 +25,7 @@ The decentralized web (Web3) offers an alternative to traditional hosting where 
 **Tech Stack:** IPFS | 4EVERLAND | Docker | Content Addressing
 
 **Provided Files:**
-- `lab18/index.html` — A beautiful course landing page ready to deploy
+- `labs/lab18/index.html` — A beautiful course landing page ready to deploy
 
 ---
 
@@ -158,7 +158,7 @@ curl http://localhost:8080/ipfs/QmXxx...
 **Requirements:**
 
 1. **Use the Provided Static Site**
-   - A course landing page is provided at `lab18/index.html`
+   - A course landing page is provided at `labs/lab18/index.html`
    - Review the HTML/CSS to understand the structure
    - You may customize it or create your own
 
@@ -180,7 +180,7 @@ curl http://localhost:8080/ipfs/QmXxx...
 <summary>💡 Hints</summary>
 
 **Provided Static Site:**
-The course provides a beautiful landing page at `lab18/index.html` that you can deploy. It includes:
+The course provides a beautiful landing page at `labs/lab18/index.html` that you can deploy. It includes:
 - Modern responsive design
 - Course curriculum overview
 - Learning roadmap
