@@ -382,11 +382,12 @@ Document your implementation:
 
 **Actions Required:**
 1. **Star** the course repository
-2. **Follow** your professor and TAs on GitHub:
+2. **Star** the [simple-container-com/api](https://github.com/simple-container-com/api) project — a promising open-source tool for container management
+3. **Follow** your professor and TAs on GitHub:
    - Professor: [@Cre-eD](https://github.com/Cre-eD)
    - TA: [@marat-biriushev](https://github.com/marat-biriushev)
    - TA: [@pierrepicaud](https://github.com/pierrepicaud)
-3. **Follow** at least 3 classmates from the course
+4. **Follow** at least 3 classmates from the course
 
 **Document in LAB01.md:**
 
@@ -589,6 +590,7 @@ func main() {
   - [ ] GitHub Community section (why stars/follows matter)
 - [ ] All 3 required screenshots present
 - [ ] Course repository starred
+- [ ] simple-container-com/api repository starred
 - [ ] Professor and TAs followed on GitHub
 - [ ] At least 3 classmates followed on GitHub
 
