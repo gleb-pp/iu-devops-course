@@ -4,6 +4,10 @@ import socket
 from datetime import datetime
 import os
 import uvicorn
+import logging
+
+logger = logging.getLogger("devops-info-service")
+
 
 HOST = os.getenv("HOST", "0.0.0.0")
 PORT = int(os.getenv("PORT", 5000))
@@ -21,6 +25,7 @@ start_time = datetime.now()
 
 def get_service_info() -> dict[str, str]:
     """Return basic service information."""
+    logger.info("Gathering service information")
     return {
         "name": app.title,
         "version": app.version,
@@ -31,6 +36,7 @@ def get_service_info() -> dict[str, str]:
 
 def get_system_info() -> dict[str, str | int | None]:
     """Return basic system information."""
+    logger.info("Gathering system information")
     return {
         "hostname": socket.gethostname(),
         "platform": platform.system(),
@@ -43,9 +49,9 @@ def get_system_info() -> dict[str, str | int | None]:
 
 def get_runtime_info() -> dict[str, str | int | None]:
     """Return runtime information such as uptime and current time."""
+    logger.info("Gathering runtime information")
     current_time = datetime.now()
     uptime = current_time - start_time
-
     return {
         "uptime_seconds": int(uptime.total_seconds()),
         "uptime_human": f"{int(uptime.total_seconds() // 3600)} hours, {int((uptime.total_seconds() % 3600) // 60)} minutes",
@@ -56,6 +62,7 @@ def get_runtime_info() -> dict[str, str | int | None]:
 
 def get_request_info(request: Request) -> dict[str, str]:
     """Return information about the incoming request."""
+    logger.info("Gathering request information")
     return {
         "client_ip": request.client.host if request.client else "Unknown",
         "user_agent": request.headers.get("user-agent", "Unknown"),
@@ -66,6 +73,7 @@ def get_request_info(request: Request) -> dict[str, str]:
 
 def get_endpoints_info() -> list[dict[str, str]]:
     """Return a list of available endpoints."""
+    logger.info("Gathering endpoints information")
     return [
         {"path": "/", "method": "GET", "description": "Service information"},
         {"path": "/health", "method": "GET", "description": "Health check"},
@@ -77,6 +85,7 @@ async def root(request: Request):
     """
     Return comprehensive service and system information.
     """
+    logger.info("Root endpoint requested")
     return {
         "service": get_service_info(),
         "system": get_system_info(),
@@ -91,6 +100,7 @@ async def health():
     """
     Health check endpoint.
     """
+    logger.info("Health check requested")
     runtime_info = get_runtime_info()
     return {
         "status": "healthy",
@@ -100,4 +110,5 @@ async def health():
 
 
 if __name__ == "__main__":
+    logger.info(f"Starting FastAPI app on {HOST}:{PORT}, debug={DEBUG}")
     uvicorn.run(app, host=HOST, port=PORT, reload=DEBUG)
