@@ -212,7 +212,7 @@ The image is publicly accessible and can be pulled and run by anyone.
 
 ### Why This Dockerfile Works
 
-This Dockerfile Works because it uses the correct base image, installs dependencies efficiently, and sets up the application to run properly. 
+This Dockerfile works because it uses the correct base image, installs dependencies efficiently, and sets up the application to run properly. 
 
 ### What If Layer Order Changed?
 
@@ -273,7 +273,6 @@ This allowed `pip install` to complete successfully.
 
 * Copied entire project directory
 * Used `--chown` unnecessarily
-* Included a `HEALTHCHECK` that did not match exposed ports
 * Exposed incorrect port (`8000` instead of `5000`)
 
 **Final Version (Improved):**
