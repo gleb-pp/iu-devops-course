@@ -2,11 +2,13 @@ name: Python CI + Docker (SemVer)
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - '**'
     tags:
       - 'v*.*.*'
   pull_request:
-    branches: [ main ]
+    branches:
+      - '**' 
 
 env:
   IMAGE_NAME: glebpp/app_python
