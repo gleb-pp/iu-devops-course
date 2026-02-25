@@ -1,6 +1,18 @@
-venv
+# Python
+venv/
 __pycache__/
 *.pyc
 .mypy_cache/
 .ruff_cache/
 .pytest_cache/
+
+# Secrets
+key.json
+
+# Terraform
+terraform.tfstate
+terraform.tfstate.backup
+.terraform/
+
+# Pulumi
+Pulumi.*.yaml
