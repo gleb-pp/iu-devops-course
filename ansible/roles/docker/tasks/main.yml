@@ -1,0 +1,50 @@
+- name: Install required system packages
+  apt:
+    name:
+      - ca-certificates
+      - curl
+      - gnupg
+    state: present
+    update_cache: yes
+
+- name: Create keyrings directory
+  file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: '0755'
+
+- name: Add Docker GPG key
+  shell: |
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+    gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  args:
+    creates: /etc/apt/keyrings/docker.gpg
+
+- name: Add Docker repository
+  apt_repository:
+    repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu noble stable"
+    state: present
+
+- name: Install Docker
+  apt:
+    name: "{{ docker_packages }}"
+    state: present
+    update_cache: yes
+  notify: Restart Docker
+
+- name: Ensure Docker is running
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Add user to docker group
+  user:
+    name: "{{ docker_user }}"
+    groups: docker
+    append: yes
+
+- name: Install python docker module
+  apt:
+    name: python3-docker
+    state: present
