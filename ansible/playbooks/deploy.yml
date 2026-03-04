@@ -3,5 +3,9 @@
   hosts: webservers
   become: yes
 
+  vars_files:
+    - ../group_vars/all.yml
+    - ../group_vars/vault.yml
+
   roles:
-    - app_deploy
+    - web_app
