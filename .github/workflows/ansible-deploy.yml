@@ -46,18 +46,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-
       - name: Install Ansible
         run: |
           pip install ansible
           ansible-galaxy collection install community.docker
-
 
       - name: Setup SSH
         run: |
@@ -66,16 +63,26 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.VM_HOST }} >> ~/.ssh/known_hosts
 
+          echo "Host ${{ secrets.VM_HOST }}" > ~/.ssh/config
+          echo "  IdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
+          echo "  User root" >> ~/.ssh/config
+          echo "  StrictHostKeyChecking no" >> ~/.ssh/config
+
+      - name: Test SSH connection
+        run: |
+          ssh -o StrictHostKeyChecking=no root@${{ secrets.VM_HOST }} "echo 'SSH connection successful'"
 
       - name: Deploy with Ansible
         run: |
           cd ansible
-
+          
           echo "${{ secrets.ANSIBLE_VAULT_PASSWORD }}" > /tmp/vault_pass
 
           ansible-playbook playbooks/deploy.yml \
             -i inventory/hosts.ini \
             --vault-password-file /tmp/vault_pass \
-            --tags "app_deploy"
-
+            --tags "app_deploy" \
+            --private-key ~/.ssh/id_rsa \
+            -u root
+            
           rm /tmp/vault_pass
