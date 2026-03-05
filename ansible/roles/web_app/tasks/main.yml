@@ -33,13 +33,6 @@
         pull: always
         state: present
 
-    - name: Wait for application
-      ansible.builtin.wait_for:
-        host: 127.0.0.1
-        port: "{{ app_port }}"
-        delay: 5
-        timeout: 30
-
   rescue:
 
     - name: Deployment failed
