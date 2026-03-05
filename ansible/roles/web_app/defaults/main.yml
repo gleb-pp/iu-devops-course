@@ -1,0 +1,5 @@
+---
+web_app_restart_policy: unless-stopped
+web_app_env_vars: {}
+web_app_docker_image: ""
+web_app_wipe: false

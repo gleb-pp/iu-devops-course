@@ -1,13 +1,52 @@
-- name: Update apt cache
-  apt:
-    update_cache: yes
-    cache_valid_time: 3600
+---
+- name: Install common packages
+  become: true
+  tags:
+    - packages
+    - common
+  block:
 
-- name: Install essential packages
-  apt:
-    name: "{{ common_packages }}"
-    state: present
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
 
-- name: Set timezone
-  timezone:
-    name: "{{ timezone }}"
+    - name: Install essential packages
+      ansible.builtin.apt:
+        name: "{{ common_packages }}"
+        state: present
+
+    - name: Set timezone
+      community.general.timezone:
+        name: "{{ timezone }}"
+
+  rescue:
+
+    - name: Fix apt cache if update failed
+      ansible.builtin.apt:
+        update_cache: true
+        force_apt_get: true
+      become: true
+
+  always:
+
+    - name: Log completion of common role
+      ansible.builtin.file:
+        path: /tmp/common_role_completed
+        state: touch
+        mode: '0644'
+
+
+- name: Manage system users
+  become: true
+  tags:
+    - users
+    - common
+  block:
+
+    - name: Ensure docker user exists
+      ansible.builtin.user:
+        name: "{{ docker_user }}"
+        state: present
+        groups: sudo
+        append: true
