@@ -1,0 +1,10 @@
+---
+- name: Site deployment
+  hosts: all
+  become: true
+  gather_facts: true
+
+  roles:
+    - common
+    - docker
+    - web_app
