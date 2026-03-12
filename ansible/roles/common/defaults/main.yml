@@ -8,4 +8,4 @@ common_packages:
   - ca-certificates
   - software-properties-common
 
-timezone: "UTC"
+common_timezone: "UTC"
