@@ -5,8 +5,20 @@ from datetime import datetime
 import os
 import uvicorn
 import logging
+import sys
+from pythonjsonlogger.json import JsonFormatter
 
 logger = logging.getLogger("devops-info-service")
+logger.setLevel(logging.INFO)
+
+handler = logging.StreamHandler(sys.stdout)
+
+formatter = JsonFormatter(
+    fmt="%(asctime)s %(levelname)s %(name)s %(message)s"
+)
+
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 HOST = os.getenv("HOST", "0.0.0.0")
@@ -21,6 +33,30 @@ app = FastAPI(
 )
 
 start_time = datetime.now()
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+
+    client_ip = request.client.host if request.client else "unknown"
+
+    logger.info({
+        "event": "request_started",
+        "method": request.method,
+        "path": request.url.path,
+        "client_ip": client_ip
+    })
+
+    response = await call_next(request)
+
+    logger.info({
+        "event": "request_finished",
+        "method": request.method,
+        "path": request.url.path,
+        "status_code": response.status_code,
+        "client_ip": client_ip
+    })
+
+    return response
 
 
 def get_service_info() -> dict[str, str]:

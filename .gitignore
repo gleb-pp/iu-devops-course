@@ -9,6 +9,8 @@ __pycache__/
 
 # Secrets
 key.json
+.vscode/
+.env
 
 # Terraform
 terraform.tfstate
