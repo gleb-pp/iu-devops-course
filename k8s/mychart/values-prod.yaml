@@ -1,0 +1,33 @@
+replicaCount: 5
+
+image:
+  repository: glebpp/app_python
+  tag: "1.0"
+
+containerPort: 5000
+
+service:
+  type: LoadBalancer
+  port: 80
+
+env:
+  ENV: "production"
+  VERSION: "v2"
+
+resources:
+  requests:
+    cpu: "200m"
+    memory: "256Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+
+probes:
+  readiness:
+    path: /
+    initialDelaySeconds: 10
+    periodSeconds: 3
+  liveness:
+    path: /
+    initialDelaySeconds: 30
+    periodSeconds: 5
