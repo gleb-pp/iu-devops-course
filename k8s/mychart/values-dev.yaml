@@ -1,0 +1,33 @@
+replicaCount: 1
+
+image:
+  repository: glebpp/app_python
+  tag: "latest"
+
+containerPort: 5000
+
+service:
+  type: NodePort
+  port: 80
+
+env:
+  ENV: "dev"
+  VERSION: "dev"
+
+resources:
+  requests:
+    cpu: "50m"
+    memory: "64Mi"
+  limits:
+    cpu: "100m"
+    memory: "128Mi"
+
+probes:
+  readiness:
+    path: /
+    initialDelaySeconds: 5
+    periodSeconds: 10
+  liveness:
+    path: /
+    initialDelaySeconds: 5
+    periodSeconds: 10
