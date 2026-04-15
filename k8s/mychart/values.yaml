@@ -35,3 +35,11 @@ probes:
 secrets:
   username: "admin"
   password: "12345"
+
+environment: "production"
+logLevel: "info"
+
+persistence:
+  enabled: true
+  size: 100Mi
+  storageClass: ""
