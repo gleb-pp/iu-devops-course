@@ -31,3 +31,7 @@ probes:
     path: /
     initialDelaySeconds: 5
     periodSeconds: 10
+
+secrets:
+  username: "admin"
+  password: "12345"
