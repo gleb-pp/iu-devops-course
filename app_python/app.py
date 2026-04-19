@@ -10,6 +10,23 @@ from pythonjsonlogger.json import JsonFormatter
 import time
 from prometheus_client import Counter, Histogram, Gauge, generate_latest, CONTENT_TYPE_LATEST
 
+DATA_FILE = "/data/visits.txt"
+
+def read_counter() -> int:
+    if not os.path.exists(DATA_FILE):
+        return 0
+    with open(DATA_FILE, "r") as f:
+        try:
+            return int(f.read().strip())
+        except:
+            return 0
+
+
+def write_counter(value: int):
+    os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
+    with open(DATA_FILE, "w") as f:
+        f.write(str(value))
+
 logger = logging.getLogger("devops-info-service")
 logger.setLevel(logging.INFO)
 
@@ -173,13 +190,26 @@ async def root(request: Request):
     """
     logger.info("Root endpoint requested")
     endpoint_calls.labels(endpoint="/").inc()
+
+    cnt = read_counter()
+    cnt += 1
+    write_counter(cnt)
+
     return {
+        "visits": cnt,
         "service": get_service_info(),
         "system": get_system_info(),
         "runtime": get_runtime_info(),
         "request": get_request_info(request),
         "endpoints": get_endpoints_info(),
     }
+
+
+@app.get("/visits")
+async def visits() -> dict[str, int]:
+    """Return the number of visits to the root endpoint."""
+    cnt = read_counter()
+    return {"visits": cnt}
 
 
 @app.get("/health")

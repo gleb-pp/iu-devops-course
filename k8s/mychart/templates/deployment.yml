@@ -23,6 +23,13 @@ spec:
           password={{ "{{ .Data.data.password }}" }}
           {{ "{{- end }}" }}
     spec:
+      volumes:
+        - name: config-volume
+          configMap:
+            name: {{ include "mychart.fullname" . }}-config
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: {{ include "mychart.fullname" . }}-data
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -31,9 +38,21 @@ spec:
             - containerPort: {{ .Values.containerPort }}
           env:
             - name: ENV
-              value: {{ .Values.env.ENV }}
+              value: {{ .Values.env.ENV | quote }}
             - name: VERSION
-              value: {{ .Values.env.VERSION }}
+              value: {{ .Values.env.VERSION | quote }}
+
+          envFrom:
+            - configMapRef:
+                name: {{ include "mychart.fullname" . }}-env
+
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+            
+            - name: data-volume
+              mountPath: /data
+
           resources:
             requests:
               cpu: {{ .Values.resources.requests.cpu }}
