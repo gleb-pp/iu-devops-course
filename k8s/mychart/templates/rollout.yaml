@@ -1,14 +1,17 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: {{ .Release.Name }}
   labels:
     app: {{ .Chart.Name }}
+
 spec:
   replicas: {{ .Values.replicaCount }}
+
   selector:
     matchLabels:
       app: {{ .Chart.Name }}
+
   template:
     metadata:
       labels:
@@ -22,20 +25,25 @@ spec:
           username={{ "{{ .Data.data.username }}" }}
           password={{ "{{ .Data.data.password }}" }}
           {{ "{{- end }}" }}
+
     spec:
       volumes:
         - name: config-volume
           configMap:
             name: {{ include "mychart.fullname" . }}-config
+
         - name: data-volume
           persistentVolumeClaim:
             claimName: {{ include "mychart.fullname" . }}-data
+
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: IfNotPresent
+
           ports:
             - containerPort: {{ .Values.containerPort }}
+
           env:
             - name: ENV
               value: {{ .Values.env.ENV | quote }}
@@ -49,7 +57,7 @@ spec:
           volumeMounts:
             - name: config-volume
               mountPath: /config
-            
+
             - name: data-volume
               mountPath: /data
 
@@ -60,15 +68,24 @@ spec:
             limits:
               cpu: {{ .Values.resources.limits.cpu }}
               memory: {{ .Values.resources.limits.memory }}
+
           readinessProbe:
             httpGet:
               path: {{ .Values.probes.readiness.path }}
               port: {{ .Values.containerPort }}
             initialDelaySeconds: {{ .Values.probes.readiness.initialDelaySeconds }}
             periodSeconds: {{ .Values.probes.readiness.periodSeconds }}
+
           livenessProbe:
             httpGet:
               path: {{ .Values.probes.liveness.path }}
               port: {{ .Values.containerPort }}
             initialDelaySeconds: {{ .Values.probes.liveness.initialDelaySeconds }}
             periodSeconds: {{ .Values.probes.liveness.periodSeconds }}
+
+  strategy:
+    blueGreen:
+      activeService: {{ .Release.Name }}-active
+      previewService: {{ .Release.Name }}-preview
+
+      autoPromotionEnabled: false
