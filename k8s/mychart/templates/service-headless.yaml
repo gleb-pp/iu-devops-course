@@ -1,12 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Release.Name }}-preview
+  name: {{ .Release.Name }}-headless
 spec:
-  type: {{ .Values.service.type }}
+  clusterIP: None
   selector:
     app: {{ .Chart.Name }}
   ports:
-    - protocol: TCP
-      port: {{ .Values.service.port }}
+    - port: {{ .Values.service.port }}
       targetPort: {{ .Values.containerPort }}

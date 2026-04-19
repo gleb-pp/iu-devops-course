@@ -41,5 +41,5 @@ logLevel: "info"
 
 persistence:
   enabled: true
-  size: 100Mi
-  storageClass: ""
+  storageClass: standard
+  size: 1Gi
